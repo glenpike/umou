@@ -1,24 +1,42 @@
-# README
+# umou 'ew-moo'
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Rails application that displays a list of items from a 3rd party API
 
-Things you may want to cover:
+Based on a simple Rails App https://guides.rubyonrails.org/getting_started.html but using [Rspec](https://rspec.info/) to test instead of the built-in Rails testing suite.
 
-* Ruby version
+- Ruby version
+  Using Ruby 3.0.3
 
-* System dependencies
+- System dependencies
 
-* Configuration
+sqlite3 this may already be installed on Mac/Linux, but if you haven't got it, see [How to install](https://www.servermania.com/kb/articles/install-sqlite/)
 
-* Database creation
+## Setup
 
-* Database initialization
+- Configuration
 
-* How to run the test suite
+Create the .env file:
 
-* Services (job queues, cache servers, search engines, etc.)
+`cp .env.example .env`
 
-* Deployment instructions
+- Database initialization
 
-* ...
+`bundle exec rails db:setup`
+
+- Start the server
+
+`bundle exec rails s`
+
+- View the site
+
+http://localhost:3000
+
+- See the available routes in Rails
+
+http://localhost:3007/rails/info/routes
+
+## Testing
+
+- How to run the test suite
+
+`bundle exec rspec`

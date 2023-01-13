@@ -1,0 +1,10 @@
+<h1>Articles#index</h1>
+<% if articles.size.positive? %>
+  <ul class="articles__list">
+    <% articles.each do |article| %>
+      <li class="articles__list-item">
+        <%= article.title %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -38,4 +38,29 @@ RSpec.describe 'articles', type: :system do
       expect(page).to have_content(username, count: count)
     end
   end
+
+  describe 'liking an article' do
+    context 'when an article is liked' do
+      let(:like) { Like.create(article_id: articles.first['id']) }
+
+      before do
+        mock
+        like
+        visit root_path
+      end
+
+      xit 'shows the like' do
+        within('.article', match: :first) do
+          expect(page).to have_selector('.like--active')
+        end
+      end
+
+      xit 'allows me to unlike it' do
+        expect do
+          click_on('Liked')
+          expect(page).not_to have_selector('.like--active')
+        end.to change { Like.count }.by(1)
+      end
+    end
+  end
 end

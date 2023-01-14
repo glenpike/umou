@@ -1,0 +1,16 @@
+<div class="articles">
+  <h1>Articles</h1>
+  <% if articles.size.positive? %>
+    <ul class="articles__list">
+      <% articles.each do |article| %>
+        <li class="article">
+          <%= image_tag article.thumbnail_url, alt: '', class: 'article__thumbnail' %>
+          <div class="article__info">
+            <%= article.title %>
+            <%= article.username %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

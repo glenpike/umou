@@ -16,7 +16,7 @@ class Article < ActiveResource::Base
   end
 
   def thumbnail_url
-    self.photos.first.files.small
+    self.photos.first.files.medium
   end
 
   def username

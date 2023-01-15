@@ -1,12 +1,12 @@
 <div class="articles">
-  <h1>Articles</h1>
+  <h1 class="articles__title">Items offered</h1>
   <% if articles.size.positive? %>
     <ul class="articles__list">
       <% articles.each do |article| %>
         <li class="article">
           <%= image_tag article.thumbnail_url, alt: '', class: 'article__thumbnail' %>
           <div class="article__info">
-            <%= article.title %>
+            <h2 class="article__title"><%= article.title %></h2>
             <%= article.username %>
             <% if article.like %>
               <%= button_to("Unlike", like_path(article.like), method: :delete, class: "article__like-button article__like-button--liked") %>

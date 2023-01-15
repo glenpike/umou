@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   private
     def articles
-      @articles ||= Article.all
+      @articles ||= Article.all_with_likes
     end
 
     helper_method :articles

@@ -56,12 +56,14 @@ $electric-violet: #6219ff;
 
   @media (min-width: 600px) {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
   }
 }
 
 .article {
+  display: flex;
+  flex-direction: column;
   text-align: left;
 }
 
@@ -74,6 +76,9 @@ $electric-violet: #6219ff;
 .article__info {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 1;
   gap: 1rem;
   padding-top: 1rem;
   font-size: 1.6rem;
@@ -99,7 +104,6 @@ $electric-violet: #6219ff;
 
 .article__info form {
   align-self: flex-end;
-  justify-self: flex-end;
 }
 
 .article__like-button {

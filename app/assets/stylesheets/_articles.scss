@@ -60,8 +60,20 @@ $red-violet: #cd1492;
   list-style: none;
 }
 .articles__sort-link {
+  border-radius: 0.5rem;
   color: $electric-violet;
   padding: 1.2rem;
+}
+
+.articles__sort-link:hover {
+  background-color: $electric-violet;
+  color: white;
+}
+
+.articles__sort-link:active,
+.articles__sort-link:focus-visible {
+  background-color: $red-violet;
+  color: white;
 }
 
 .articles__list {
@@ -137,6 +149,7 @@ $red-violet: #cd1492;
   margin: 0.5rem 0;
 }
 
+.article__like-button:active,
 .article__like-button:focus-visible {
   background-color: white;
   color: $electric-violet;
@@ -148,6 +161,7 @@ $red-violet: #cd1492;
   border-color: $red-violet;
 }
 
+.article__like-button--liked:active,
 .article__like-button--liked:focus-visible {
   background-color: white;
   color: $red-violet;

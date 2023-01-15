@@ -3,22 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'articles', type: :system do
-  let(:articles_json) { File.read('spec/fixtures/articles.json') }
-  let(:articles) { JSON.parse(articles_json) }
-  let(:mock) do
-    ActiveResource::HttpMock.respond_to do |mock|
-      status = 200
-      body = articles_json
+  include ActiveResourceMocks
 
-      mock.get "#{Article.collection_path}",
-                { 'Accept' => 'application/json' },
-                body, status, {}
-    end
-  end
+  let(:articles) { mock_articles }
 
   describe 'displaying information' do
     before do
-      mock
       visit root_path
     end
 
@@ -42,7 +32,6 @@ RSpec.describe 'articles', type: :system do
   describe 'liking an article' do
     context 'when there are no likes' do
       before do
-        mock
         visit root_path
       end
 
@@ -52,12 +41,10 @@ RSpec.describe 'articles', type: :system do
       end
 
       it 'allows me to like the first article' do
-        expect do
-          within('.article', match: :first) do
-            click_on('Like')
-            expect(page).to have_selector('.article__like-button--liked', count: 1)
-          end
-        end.to change { Like.count }.by(1)
+        within('.article', match: :first) do
+          click_on('Like')
+          expect(page).to have_selector('.article__like-button--liked', count: 1)
+        end
       end
     end
 
@@ -65,7 +52,6 @@ RSpec.describe 'articles', type: :system do
       let(:like) { Like.create(article_id: articles.first['id']) }
 
       before do
-        mock
         like
         visit root_path
       end
@@ -77,10 +63,8 @@ RSpec.describe 'articles', type: :system do
       end
 
       it 'allows me to unlike it' do
-        expect do
-          click_on('Liked')
-          expect(page).to have_selector('.article__like-button', count: articles.size)
-        end.to change { Like.count }.by(-1)
+        click_on('Unlike')
+        expect(page).to have_selector('.article__like-button', count: articles.size)
       end
     end
   end

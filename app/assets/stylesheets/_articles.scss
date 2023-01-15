@@ -137,9 +137,10 @@ $red-violet: #cd1492;
   margin: 0.5rem 0;
 }
 
-.article__like-button:focus-within {
+.article__like-button:focus-visible {
   background-color: white;
   color: $electric-violet;
+  outline-offset: 2px;
 }
 
 .article__like-button--liked {
@@ -147,7 +148,7 @@ $red-violet: #cd1492;
   border-color: $red-violet;
 }
 
-.article__like-button--liked:focus-within {
+.article__like-button--liked:focus-visible {
   background-color: white;
   color: $red-violet;
 }

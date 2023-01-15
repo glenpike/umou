@@ -9,7 +9,7 @@
             <%= article.title %>
             <%= article.username %>
             <% if article.like %>
-              <%= button_to("Liked", like_path(article.like), method: :delete, class: "article__like-button article__like-button--liked") %>
+              <%= button_to("Unlike", like_path(article.like), method: :delete, class: "article__like-button article__like-button--liked") %>
             <% else %>
               <%= button_to("Like", likes_path(article_id: article.id), method: :post, class: "article__like-button") %>
             <% end %>

@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   def create
-    Like.create(article_id: params[:article_id])
+    article = Article.all.find { |a| a.id == params[:article_id].to_i }
+
+    raise ActiveRecord::RecordNotFound unless article
+
+    Like.create(article_id: article.id)
 
     redirect_to root_path
   end

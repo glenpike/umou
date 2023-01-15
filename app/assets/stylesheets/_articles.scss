@@ -53,12 +53,30 @@
   flex-direction: column;
   gap: 1rem;
   padding-top: 1rem;
+  font-size: 1.6rem;
 }
 
 .article__title {
   width: 300px;
   font-size: 2rem;
   word-wrap: break-word;
+}
+
+.article__user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.article__user-avatar {
+  height: 2rem;
+  width: auto;
+}
+
+.article__info form {
+  align-self: flex-end;
+  justify-self: flex-end;
 }
 
 .article__like-button {

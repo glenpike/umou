@@ -22,4 +22,8 @@ class Article < ActiveResource::Base
   def username
     self.user.first_name
   end
+
+  def user_avatar
+    self.user.current_avatar.small
+  end
 end

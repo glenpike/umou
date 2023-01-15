@@ -1,21 +1,26 @@
 <div class="articles">
-  <h1>Articles</h1>
-  <% if articles.size.positive? %>
-    <ul class="articles__list">
-      <% articles.each do |article| %>
-        <li class="article">
-          <%= image_tag article.thumbnail_url, alt: '', class: 'article__thumbnail' %>
-          <div class="article__info">
-            <%= article.title %>
-            <%= article.username %>
-            <% if article.like %>
-              <%= button_to("Unlike", like_path(article.like), method: :delete, class: "article__like-button article__like-button--liked") %>
-            <% else %>
-              <%= button_to("Like", likes_path(article_id: article.id), method: :post, class: "article__like-button") %>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+  <div class="articles__header">
+    <h1 class="articles__title">Items offered</h1>
+    <span class="articles__logo">umou</span>
+  </div>
+  <div class="articles__body">
+    <% if articles.size.positive? %>
+      <ul class="articles__list">
+        <% articles.each do |article| %>
+          <li class="article">
+            <%= image_tag article.thumbnail_url, alt: '', class: 'article__thumbnail' %>
+            <div class="article__info">
+              <h2 class="article__title"><%= article.title %></h2>
+              <p class="article__user">Listed by: <%= article.username %> <%= image_tag article.user_avatar, alt: '', class: 'article__user-avatar' %></p>
+              <% if article.like %>
+                <%= button_to("Unlike", like_path(article.like), method: :delete, class: "article__like-button article__like-button--liked") %>
+              <% else %>
+                <%= button_to("Like", likes_path(article_id: article.id), method: :post, class: "article__like-button") %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </div>

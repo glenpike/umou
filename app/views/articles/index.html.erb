@@ -7,7 +7,7 @@
           <%= image_tag article.thumbnail_url, alt: '', class: 'article__thumbnail' %>
           <div class="article__info">
             <h2 class="article__title"><%= article.title %></h2>
-            <%= article.username %>
+            <p class="article__user">Listed by: <%= article.username %> <%= image_tag article.user_avatar, alt: '', class: 'article__user-avatar' %></p>
             <% if article.like %>
               <%= button_to("Unlike", like_path(article.like), method: :delete, class: "article__like-button article__like-button--liked") %>
             <% else %>

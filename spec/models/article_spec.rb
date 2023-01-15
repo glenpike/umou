@@ -9,6 +9,7 @@ RSpec.describe Article, type: :model do
 
   it { should respond_to(:thumbnail_url) }
   it { should respond_to(:username) }
+  it { should respond_to(:user_avatar) }
 
   describe 'all_with_likes' do
     let(:articles) { mock_articles }

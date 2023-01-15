@@ -16,10 +16,14 @@ class Article < ActiveResource::Base
   end
 
   def thumbnail_url
-    self.photos.first.files.small
+    self.photos.first.files.medium
   end
 
   def username
     self.user.first_name
+  end
+
+  def user_avatar
+    self.user.current_avatar.small
   end
 end

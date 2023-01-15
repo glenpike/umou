@@ -40,6 +40,27 @@ RSpec.describe 'articles', type: :system do
   end
 
   describe 'liking an article' do
+    context 'when there are no likes' do
+      before do
+        mock
+        visit root_path
+      end
+
+      it 'shows the buttons' do
+        expect(page).to have_selector('.article__like-button', count: articles.size)
+        expect(page).not_to have_selector('.article__like-button--liked')
+      end
+
+      it 'allows me to like the first article' do
+        expect do
+          within('.article', match: :first) do
+            click_on('Like')
+            expect(page).to have_selector('.article__like-button--liked', count: 1)
+          end
+        end.to change { Like.count }.by(1)
+      end
+    end
+
     context 'when an article is liked' do
       let(:like) { Like.create(article_id: articles.first['id']) }
 
@@ -49,17 +70,17 @@ RSpec.describe 'articles', type: :system do
         visit root_path
       end
 
-      xit 'shows the like' do
+      it 'shows the like' do
         within('.article', match: :first) do
-          expect(page).to have_selector('.like--active')
+          expect(page).to have_selector('.article__like-button--liked')
         end
       end
 
-      xit 'allows me to unlike it' do
+      it 'allows me to unlike it' do
         expect do
           click_on('Liked')
-          expect(page).not_to have_selector('.like--active')
-        end.to change { Like.count }.by(1)
+          expect(page).to have_selector('.article__like-button', count: articles.size)
+        end.to change { Like.count }.by(-1)
       end
     end
   end

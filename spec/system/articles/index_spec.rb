@@ -84,14 +84,14 @@ RSpec.describe 'articles', type: :system do
       end
 
       it 'shows the buttons' do
-        expect(page).to have_selector('.article__like-button', count: articles.size)
-        expect(page).not_to have_selector('.article__like-button--liked')
+        expect(page).to have_selector('.button', count: articles.size)
+        expect(page).not_to have_selector('.button--liked')
       end
 
       it 'allows me to like the first article' do
         within('.article', match: :first) do
           click_on('Like')
-          expect(page).to have_selector('.article__like-button--liked', count: 1)
+          expect(page).to have_selector('.button--liked', count: 1)
         end
       end
     end
@@ -106,13 +106,13 @@ RSpec.describe 'articles', type: :system do
 
       it 'shows the like' do
         within('.article', match: :first) do
-          expect(page).to have_selector('.article__like-button--liked')
+          expect(page).to have_selector('.button--liked')
         end
       end
 
       it 'allows me to unlike it' do
         click_on('Unlike')
-        expect(page).to have_selector('.article__like-button', count: articles.size)
+        expect(page).to have_selector('.button', count: articles.size)
       end
     end
   end

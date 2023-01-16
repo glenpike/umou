@@ -1,0 +1,28 @@
+.button {
+  background-color: $electric-violet;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border: 2px solid $electric-violet;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+}
+
+.button:active,
+.button:focus-visible {
+  background-color: white;
+  color: $electric-violet;
+  outline-offset: 2px;
+}
+
+.button--liked {
+  background-color: $red-violet;
+  border-color: $red-violet;
+}
+
+.button--liked:active,
+.button--liked:focus-visible {
+  background-color: white;
+  color: $red-violet;
+}

@@ -1,46 +1,42 @@
-<div class="articles">
-  <div class="articles__header">
-    <h1 class="articles__title">Items offered</h1>
-    <span class="articles__logo">umou</span>
-  </div>
-  <div class="articles__body">
-    <% if articles.size.positive? %>
-      <div class="articles__sorting">
-        Sort by:
-        <ul class="articles__sort-options">
-          <li>
-            <%= link_to 'Default', root_path, class: 'articles__sort-link' %>
-          </li>
-          <li>
-            <%= link_to 'Title', root_path(params: { sort: 'title' }), class: 'articles__sort-link' %>
-          </li>
-          <li>
-            <%= link_to 'Distance (closest first)', root_path(params: { sort: 'closest' }), class: 'articles__sort-link' %>
-          </li>
-          <li>
-            <%= link_to 'Most popular', root_path(params: { sort: 'popular' }), class: 'articles__sort-link' %>
-          </li>
-        </ul>
+<% content_for :header_title do %>
+  Items offered
+<% end %>
 
-      </div>
-      <ul class="articles__list">
-        <% articles.each do |article| %>
-          <li class="article">
-            <%= image_tag article.thumbnail_url, alt: '', class: 'article__thumbnail' %>
-            <div class="article__info">
-              <h2 class="article__title"><%= article.title %></h2>
-              <p class="article__user">Listed by: <%= article.username %> <%= image_tag article.user_avatar, alt: '', class: 'article__user-avatar' %></p>
-              <p>Distance <%= article.location.distance %></p>
-              <p>Views <%= article.reactions.views %></p>
-              <% if article.like %>
-                <%= button_to("Unlike", like_path(article.like), method: :delete, class: "article__like-button article__like-button--liked") %>
-              <% else %>
-                <%= button_to("Like", likes_path(article_id: article.id), method: :post, class: "article__like-button") %>
-              <% end %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+<% if articles.size.positive? %>
+  <div class="articles__sorting">
+    Sort by:
+    <ul class="articles__sort-options">
+      <li>
+        <%= link_to 'Default', root_path, class: 'link' %>
+      </li>
+      <li>
+        <%= link_to 'Title', root_path(params: { sort: 'title' }), class: 'link' %>
+      </li>
+      <li>
+        <%= link_to 'Distance (closest first)', root_path(params: { sort: 'closest' }), class: 'link' %>
+      </li>
+      <li>
+        <%= link_to 'Most popular', root_path(params: { sort: 'popular' }), class: 'link' %>
+      </li>
+    </ul>
+
   </div>
-</div>
+  <ul class="articles__list">
+    <% articles.each do |article| %>
+      <li class="article">
+        <%= image_tag article.thumbnail_url, alt: '', class: 'article__thumbnail' %>
+        <div class="article__info">
+          <h2 class="article__title"><%= article.title %></h2>
+          <p class="article__user">Listed by: <%= article.username %> <%= image_tag article.user_avatar, alt: '', class: 'article__user-avatar' %></p>
+          <p>Distance <%= article.location.distance %></p>
+          <p>Views <%= article.reactions.views %></p>
+          <% if article.like %>
+            <%= button_to("Unlike", like_path(article.like), method: :delete, class: "button button--liked") %>
+          <% else %>
+            <%= button_to("Like", likes_path(article_id: article.id), method: :post, class: "button") %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

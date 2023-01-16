@@ -10,8 +10,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main>
+  <body class="app">
+    <header class="header">
+      <h1 class="header__title"><%= yield :header_title%></h1>
+      <span class="header__logo">umou</span>
+    </header>
+    <main class="main">
       <%= yield %>
     </main>
   </body>

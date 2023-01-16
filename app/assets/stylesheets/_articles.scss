@@ -47,17 +47,27 @@ $red-violet: #cd1492;
 
 .articles__sorting {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1rem;
   font-size: 1.6rem;
   padding: 1rem 0;
+  @media (min-width: 660px) {
+    flex-direction: row;
+  }
 }
 
 .articles__sort-options {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 2rem;
   list-style: none;
+  margin-left: -1rem;
+  width: 300px;
+  @media (min-width: 660px) {
+    margin-left: unset;
+    width: auto;
+  }
 }
 .articles__sort-link {
   border-radius: 0.5rem;

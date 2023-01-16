@@ -1,0 +1,16 @@
+.link {
+  border-radius: 0.5rem;
+  color: $electric-violet;
+  padding: 1.2rem;
+}
+
+.link:hover {
+  background-color: $electric-violet;
+  color: white;
+}
+
+.link:active,
+.link:focus-visible {
+  background-color: $red-violet;
+  color: white;
+}

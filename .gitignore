@@ -36,3 +36,6 @@
 
 # Dotenv file
 .env
+
+# Simplecov code coverage output
+coverage

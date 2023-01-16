@@ -10,6 +10,11 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara'
 
+require 'simplecov'
+SimpleCov.start 'rails' do
+  enable_coverage :branch
+end
+
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

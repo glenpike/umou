@@ -48,7 +48,7 @@ You should see a page of items with images, titles and like buttons if everythin
 
 - See the available routes in Rails
 
-http://localhost:3007/rails/info/routes
+http://localhost:3000/rails/info/routes
 
 ## Data
 

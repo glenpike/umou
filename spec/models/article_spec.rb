@@ -40,5 +40,49 @@ RSpec.describe Article, type: :model do
         end
       end
     end
+
+    context 'performance test 1' do
+      let!(:dummy_likes) { (1..1000).each do |i|
+        Like.create(article_id: i)
+      end
+    }
+      before do
+        articles.each do |article|
+          Like.create(article_id: article['id'])
+        end
+      end
+
+      it 'all_with_likes' do
+        start = Time.now
+        Article.all_with_likes
+        finish = Time.now
+
+        puts "all_with_likes: #{finish - start}"
+      end
+
+      it 'all' do
+        start = Time.now
+        Article.all
+        finish = Time.now
+
+        puts "all: #{finish - start}"
+      end
+
+      it 'all_with_each_like' do
+        start = Time.now
+        Article.all_with_each_like
+        finish = Time.now
+
+        puts "all_with_each_like: #{finish - start}"
+      end
+
+      it 'all_likes_by_ids' do
+        start = Time.now
+        Article.all_likes_by_ids
+        finish = Time.now
+
+        puts "all_likes_by_ids: #{finish - start}"
+      end
+    end
   end
 end

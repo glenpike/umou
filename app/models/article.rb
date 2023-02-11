@@ -15,6 +15,27 @@ class Article < ActiveResource::Base
     end
   end
 
+  def self.all_with_each_like
+    all.each do |article|
+      article.like = Like.find_by(article_id: article.id)
+    end
+  end
+
+  def self.all_likes_by_ids
+    articles = all
+
+    ids = articles.map { |article| article.id }
+
+    likes = Like.where(article_id: ids).reduce({}) do |acc, like|
+      acc[like.article_id] = like
+      acc
+    end
+
+    articles.each do |article|
+      article.like = likes[article.id]
+    end
+  end
+
   def thumbnail_url
     self.photos.first.files.medium
   end

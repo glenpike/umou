@@ -42,10 +42,13 @@ RSpec.describe Article, type: :model do
     end
 
     context 'performance test 1' do
-      let!(:dummy_likes) { (1..1000).each do |i|
-        Like.create(article_id: i)
+      let!(:dummy_likes) do
+        (1..1000).to_a.each do |i|
+          like = Like.new(article_id: i)
+          like.save(validate: false)
+        end
       end
-    }
+
       before do
         articles.each do |article|
           Like.create(article_id: article['id'])

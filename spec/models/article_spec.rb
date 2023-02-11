@@ -43,7 +43,7 @@ RSpec.describe Article, type: :model do
 
     context 'performance test 1' do
       let!(:dummy_likes) do
-        (1..1000).to_a.each do |i|
+        (1..10000).to_a.each do |i|
           like = Like.new(article_id: i)
           like.save(validate: false)
         end

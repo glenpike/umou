@@ -54,6 +54,14 @@ RSpec.describe Article, type: :model do
           Like.create(article_id: article['id'])
         end
       end
+      
+      it 'all' do
+        start = Time.now
+        Article.all
+        finish = Time.now
+
+        puts "all: #{finish - start}"
+      end
 
       it 'all_with_likes' do
         start = Time.now
@@ -61,14 +69,6 @@ RSpec.describe Article, type: :model do
         finish = Time.now
 
         puts "all_with_likes: #{finish - start}"
-      end
-
-      it 'all' do
-        start = Time.now
-        Article.all
-        finish = Time.now
-
-        puts "all: #{finish - start}"
       end
 
       it 'all_with_each_like' do
